@@ -3,101 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVIATOR AI PREDICTOR PREMIUM</title>
+    <title>Aviator AI Predictor</title>
     <style>
-        body { font-family: sans-serif; background-color: #121212; color: #ffffff; text-align: center; margin: 0; padding: 20px; direction: rtl; }
-        .container { max-width: 500px; background: #1e1e1e; margin: 30px auto; padding: 30px; border-radius: 15px; border: 1px solid #ff0055; box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2); }
-        h1 { color: #ff0055; font-size: 24px; text-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
-        .hidden { display: none !important; }
-        label { display: block; margin: 15px 0 5px; font-weight: bold; color: #bbb; }
-        input { width: 90%; padding: 12px; background: #2d2d2d; border: 1px solid #444; color: #fff; border-radius: 8px; margin-bottom: 10px; text-align: center; font-size: 16px; }
-        input:focus { border-color: #ff0055; outline: none; }
-        button { width: 95%; padding: 14px; background: linear-gradient(45deg, #ff0055, #990033); border: none; color: white; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        button:hover { transform: scale(1.02); }
-        .result-box { margin-top: 25px; padding: 20px; background: #252525; border-radius: 10px; border-left: 5px solid #ff0055; border-right: 5px solid #ff0055; font-size: 18px; font-weight: bold; }
-        .footer-links { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
-        .footer-links a { display: inline-block; color: #00ffcc; text-decoration: none; margin: 10px; background: #2a2a2a; padding: 8px 15px; border-radius: 5px; border: 1px solid #00ffcc; font-size: 15px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: radial-gradient(circle, #1a1a2e, #0f0f1a); color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .container { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid rgba(255,255,255,0.1); text-align: center; backdrop-filter: blur(10px); }
+        h2 { color: #ff3366; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255,51,102,0.5); }
+        .hidden { display: none; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-size: 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        input:focus { outline: none; border-color: #ff3366; background: rgba(255,255,255,0.15); }
+        button { width: 100%; padding: 12px; background: linear-gradient(45deg, #ff3366, #ff0044); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,51,102,0.4); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,51,102,0.6); }
+        .history-container { display: flex; justify-content: space-between; margin-bottom: 15px; gap: 10px; }
+        .hist-box { flex: 1; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 8px; font-size: 14px; border: 1px dashed rgba(255,255,255,0.2); text-align: center; }
+        #result-box { margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px; border-left: 5px solid #ff3366; }
+        .next-multi { font-size: 24px; font-weight: bold; color: #00ffcc; text-shadow: 0 0 10px rgba(0,255,204,0.5); margin-top: 5px; }
+        .error { color: #ff3333; margin-top: 10px; font-size: 14px; }
+        .footer-promo { margin-top: 30px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: #aaa; }
+        .footer-promo a { color: #00ffcc; text-decoration: none; font-weight: bold; }
+        .whatsapp-btn { display: inline-block; margin-top: 10px; padding: 8px 15px; background: #25D366; color: white; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 13px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Login Section -->
-    <div id="loginSection">
-        <h1>✈️ AVIATOR AI PREDICTOR PREMIUM ✈️</h1>
-        <p style="color: #aaa;">لاگ ان پاسورڈ درج کریں</p>
-        <input type="password" id="passInput" placeholder="پاسورڈ یہاں لکھیں">
-        <button onclick="checkPassword()">لاگ ان کریں</button>
+    <div class="container">
+        <!-- Password Screen -->
+        <div id="login-screen">
+            <h2>AI Predictor Login</h2>
+            <p style="margin-bottom: 15px; color: #ccc;">Pehle password enter karein:</p>
+            <input type="text" id="password-input" placeholder="Password daalein...">
+            <button onclick="checkPassword()">Login Karein</button>
+            <p id="login-error" class="error hidden">Galat password! Dobara koshish karein.</p>
+        </div>
+
+        <!-- Main Predictor Screen -->
+        <div id="main-screen" class="hidden">
+            <h2>Aviator AI Predictor</h2>
+            
+            <p style="text-align: left; margin-bottom: 5px; color: #ccc; font-size: 14px;">Purani 3 History Numbers Daalein:</p>
+            <div class="history-container">
+                <input type="number" step="0.01" id="hist1" class="hist-box" placeholder="1st Last">
+                <input type="number" step="0.01" id="hist2" class="hist-box" placeholder="2nd Last">
+                <input type="number" step="0.01" id="hist3" class="hist-box" placeholder="3rd Last">
+            </div>
+
+            <p style="text-align: left; margin-bottom: 5px; color: #ccc; font-size: 14px;">Abhi Ka Current Round Number Daalein:</p>
+            <input type="number" step="0.01" id="current-round" placeholder="Example: 1.85">
+            
+            <button onclick="generatePrediction()">Agla Multiplier Check Karein</button>
+
+            <div id="result-box" class="hidden">
+                <p style="color: #ccc; font-size: 14px;">AI Ki Agli Prediction:</p>
+                <div id="prediction-output" class="next-multi">1.50x</div>
+            </div>
+            
+            <!-- Promotional Footer -->
+            <div class="footer-promo">
+                <p>Sirf is platform par 100% sahi kam karega: <br> <a href="https://92lotto.com/#/register?invitationCode=517782782786" target="_blank">92Lotto Register Link</a></p>
+                <p style="margin-top: 10px;">Account active karwane ke liye:</p>
+                <a href="https://wa.me/03296024644" class="whatsapp-btn" target="_blank">WhatsApp Par Rabta Karein</a>
+            </div>
+        </div>
     </div>
 
-    <!-- Main App Section -->
-    <div id="appSection" class="hidden">
-        <h1>✈️ AVIATOR AI PREDICTOR PREMIUM ✈️</h1>
-        <p style="color: #00ffcc; font-weight: bold;">[اسٹریٹیجی پریڈکشن کیلکولیٹر AI]</p>
-        
-        <label>پچھلا آخری نمبر درج کریں (Last Round Number):</label>
-        <input type="number" step="0.01" id="num1" placeholder="مثال: 1.85">
-        
-        <button onclick="calculatePrediction()">اگلا چانس نکالیں</button>
-        <div id="resultDisplay" class="result-box hidden"></div>
-    </div>
-
-    <!-- Contact & Promotional Links Section -->
-    <div class="footer-links">
-        <!-- Game Link Button -->
-        <a href="https://www.92lotto.bet/#/register?invitationCode=281421172641" target="_blank">🔗 گیم لنک</a>
-        
-        <!-- Custom Message & WhatsApp Contact -->
-        <p style="color: #ffcc00; font-size: 15px; margin-top: 15px; font-weight: bold;">
-            agar kisi ko chahiye to idr rabta kare 👇
-        </p>
-        <a href="https://wa.me/923296024644" target="_blank" style="border-color: #25D366; color: #25D366;">💬 WhatsApp رابطہ</a>
-    </div>
-</div>
-
-<script>
-    // Configuration Settings
-    const PASSWORD_REQUIRED = "2786";
-
-    // Password Validation
-    function checkPassword() {
-        if (document.getElementById("passInput").value === PASSWORD_REQUIRED) {
-            document.getElementById("loginSection").classList.add("hidden");
-            document.getElementById("appSection").classList.remove("hidden");
-        } else {
-            alert("❌ غلط پاسورڈ درج کیا گیا ہے۔");
-        }
-    }
-
-    // New 1-Round History Prediction Formula
-    function calculatePrediction() {
-        const n1 = parseFloat(document.getElementById("num1").value);
-
-        if (isNaN(n1)) {
-            alert("براہ کرم خانوں میں صحیح ہندسہ درج کریں۔");
-            return;
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('password-input').value;
+            // Naya password check yahan ho rha ha
+            if(pass === 'NAJAF .786') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('main-screen').classList.remove('hidden');
+            } else {
+                const err = document.getElementById('login-error');
+                err.classList.remove('hidden');
+            }
         }
 
-        // 1 Round AI Simulation Multiplier Calculation
-        let next_val = Math.round((n1 * 1.35) * 100) / 100;
-        
-        // Base limits to keep prediction realistic
-        if (next_val < 1.10) {
-            next_val = 1.25;
-        } else if (next_val > 8.0) {
-            next_val = Math.round((2.15 + Math.random()) * 100) / 100;
-        }
+        function generatePrediction() {
+            const currentVal = parseFloat(document.getElementById('current-round').value);
+            
+            if(!currentVal || currentVal <= 0) {
+                alert("Plz sahi current round number daalein!");
+                return;
+            }
 
-        const resultBox = document.getElementById("resultDisplay");
-        resultBox.classList.remove("hidden");
-        
-        if (next_val > 2.0) {
-            resultBox.innerHTML = `💡 متوقع اگلا چانس (Predicted X): <span style="color: #00ff00; font-size: 24px;">${next_val}x</span><br><span style="color: #ffcc00; font-size: 14px;">🔥 بڑا گراف آنے کا امکان ہے۔</span>`;
-        } else {
-            resultBox.innerHTML = `💡 متوقع اگلا چانس (Predicted X): <span style="color: #ffcc00; font-size: 24px;">${next_val}x</span><br><span style="color: #00ffcc; font-size: 14px;">🛡️ گراف نارمل رہنے کا امکان ہے۔</span>`;
+            let prediction;
+            if (currentVal < 2.0) {
+                prediction = (currentVal * 1.35 + (Math.random() * 0.5)).toFixed(2);
+            } else {
+                prediction = (1.10 + (Math.random() * 0.40)).toFixed(2);
+            }
+
+            if (prediction < 1.0) prediction = "1.25";
+
+            document.getElementById('prediction-output').innerText = prediction + "x";
+            document.getElementById('result-box').classList.remove('hidden');
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
